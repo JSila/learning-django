@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All publishers</title>
+</head>
+<body>
+
+<table border="1">
+    {% for publisher in publishers %}
+        <tr>
+            <td>{{ publisher.name }}</td>
+            <td>{{ publisher.address }}</td>
+            <td>{{ publisher.city }}</td>
+            <td>{{ publisher.state_province }}</td>
+            <td>{{ publisher.country }}</td>
+            <td>{{ publisher.website }}</td>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
