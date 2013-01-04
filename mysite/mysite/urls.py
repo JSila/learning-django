@@ -1,27 +1,26 @@
 from django.conf.urls import patterns, include, url
-from mysite.views import *
-from books.views import *
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-	('^hello/$', hello),
-	('^time/$', current_datetime),
-	(r'^time/plus/(\d{1,2})/$', hours_ahead),
-    ('^books/publishers/$', show_publishers),
-    ('^browser/$', display_browser),
-    ('^meta/$', display_meta),
-    (r'^search/$', search_book),
-
-    # Examples:
-    # url(r'^$', 'mysite.views.home', name='home'),
-    # url(r'^mysite/', include('mysite.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+)
+
+
+urlpatterns += patterns('mysite.views',
+	(r'^hello/$', 'hello'),
+	(r'^time/$', 'current_datetime'),
+	(r'^time/plus/(\d{1,2})/$', 'hours_ahead'),
+    (r'^browser/$', 'display_browser'),
+    (r'^meta/$', 'display_meta'),
+    (r'^arhiv/(?P<year>\d{4})/(?P<month>\d{2})/$', 'show_archive_entries'),
+    (r'^postevanka1/$','show_results', dict(template_name='temp1.html')),
+    (r'^postevanka2/$','show_results', dict(template_name='temp2.html')),
+)
+
+urlpatterns += patterns('mysite.books.views',
+    (r'^books/publishers/$', 'show_publishers'),
+    (r'^search/$', 'search_book'),
 )

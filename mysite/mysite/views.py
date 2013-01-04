@@ -62,3 +62,10 @@ def contact(request):
             initial='I love your site!'
         )
     return render_to_response('contact_form.html', {'form': form})
+
+def show_archive_entries(request, month, year):
+    return HttpResponse('Iskal si zapise iz leta %s in meseca %s' %( year, month))
+
+def show_results(request, template_name):
+    d = {v: v**2 for v in xrange(10)}
+    return render_to_response(template_name, dict(d=d))

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Prikaz postevanke na 1. način</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>Stevilo</td>
+        <td>Koren stevila</td>
+    </tr>
+    {% for n, n2 in d.items %}
+    <tr>
+        <td>{{ n }}</td>
+        <td>{{ n2 }}</td>
+    </tr>
+    {%  endfor %}
+</table>
+</body>
+</html>
